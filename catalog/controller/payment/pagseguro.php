@@ -30,13 +30,12 @@ class ControllerPaymentPagseguro extends Controller
 		
 		$this->data['button_confirm'] = $this->language->get('button_confirm');
 		$this->data['button_back']    = $this->language->get('button_back');
-		if(isset($this->session->data['token'])){
-			$this->data['continue']       = HTTPS_SERVER . 'index.php?route=checkout/success&token=' . $this->session->data['token'];
-			$this->data['back']       = HTTPS_SERVER . 'index.php?route=checkout/payment&token=' . $this->session->data['token'];
-		}else{
-			$this->data['continue']       = HTTPS_SERVER . 'index.php?route=checkout/success&token=';
-			$this->data['back']       = HTTPS_SERVER . 'index.php?route=checkout/payment&token=';
-		}
+		
+        // Fix para compatibilidade com versões anteriores
+        $this->session->data['token'] = array_key_exists('token', $this->session->data) ? $this->session->data['token'] : "";
+        		
+		$this->data['continue']       = HTTPS_SERVER . 'index.php?route=checkout/success&token=' . $this->session->data['token'];
+		$this->data['back']           = HTTPS_SERVER . 'index.php?route=checkout/payment&token=' . $this->session->data['token'];
 
         /* Aplicando a biblioteca PagSeguro */
         list($order, $cart) = $this->model_payment_pagseguro->getCart();
