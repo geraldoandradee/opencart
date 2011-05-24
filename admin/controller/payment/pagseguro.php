@@ -19,12 +19,11 @@ class ControllerPaymentPagseguro extends Controller {
         $this->load->language('payment/pagseguro');
 
         $this->document->title = $this->language->get('heading_title');
-
+        
         $this->load->model('setting/setting');
         
-        // Fix para compatibilidade com versões anteriores
-        $this->session->data['token'] = array_key_exists('token', $this->session->data) ? $this->session->data['token'] : "";
-
+        $this->session->data['token'] = isset($this->session->data['token']) ? $this->session->data['token'] : '';
+            
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && ($this->validate())) {
 
             $this->load->model('setting/setting');

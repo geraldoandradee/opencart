@@ -31,9 +31,7 @@ class ControllerPaymentPagseguro extends Controller
 		$this->data['button_confirm'] = $this->language->get('button_confirm');
 		$this->data['button_back']    = $this->language->get('button_back');
 		
-        // Fix para compatibilidade com versões anteriores
-        $this->session->data['token'] = array_key_exists('token', $this->session->data) ? $this->session->data['token'] : "";
-        		
+		$this->session->data['token'] = isset($this->session->data['token']) ? $this->session->data['token'] : '';
 		$this->data['continue']       = HTTPS_SERVER . 'index.php?route=checkout/success&token=' . $this->session->data['token'];
 		$this->data['back']           = HTTPS_SERVER . 'index.php?route=checkout/payment&token=' . $this->session->data['token'];
 
@@ -50,7 +48,11 @@ class ControllerPaymentPagseguro extends Controller
             );
         }
         list($ddd, $telefone) = trataTelefone($order['telephone']);
-        list($endereco, $numero, $complemento) = trataEndereco("{$order['payment_address_1']} {$order['payment_address_2']}");
+        
+        $street = explode(',',$order['shipping_address_1']);            
+        $street = array_slice(array_merge($street, array("","","")),0,3); 
+        list($endereco, $numero, $complemento) = $street;      
+        
         $cliente = array (
           'nome'   => $order['payment_firstname'].' '.$order['payment_lastname'],
           'cep'    => $order['payment_postcode'],
@@ -64,7 +66,7 @@ class ControllerPaymentPagseguro extends Controller
           'tel'    => $telefone,
           'email'  => $order['email'],
         );
-		
+
 		/*Pega cupom e calcula o desconto*/
 		if(isset($this->session->data['coupon']) && $this->session->data['coupon']){	
 			$coupon =  $this->model_checkout_coupon->getCoupon($this->session->data['coupon']);
@@ -142,7 +144,6 @@ class ControllerPaymentPagseguro extends Controller
 		$this->language->load('payment/pagseguro');
 		
 		$this->load->model('checkout/order');
-		
 		$comment  = $this->language->get('text_payable') . "\n";
 		$comment .= $this->config->get('pagseguro_payable') . "\n\n";
 		$comment .= $this->language->get('text_address') . "\n";

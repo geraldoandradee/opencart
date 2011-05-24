@@ -48,8 +48,8 @@ function retorno_automatico(
 							){
 	global $db, $log;
 
-    $order = $db->query('SELECT * FROM ' . DB_PREFIX . '`order` WHERE order_id = ' . $Referencia);
-	
+    $order = $db->query('SELECT * FROM `' . DB_PREFIX . 'order` WHERE order_id = ' . $Referencia);
+
 	switch($StatusTransacao){
 		case 'Aguardando Pagto' :
 			$order_status_id = 10200;
@@ -78,7 +78,6 @@ function retorno_automatico(
 		default:
 			$order_status_id = 10206;
 	}
-	
 	$log -> setLog('order_status_id : ' . $order_status_id . "\n");
 	
 	$db->query('UPDATE `' . DB_PREFIX . 'order` SET `order_status_id` = ' . $order_status_id . ' WHERE `order_id` = ' . $Referencia);

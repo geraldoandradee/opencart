@@ -1,11 +1,11 @@
 ﻿=== Módulo de integração PagSeguro + Opencart ===
 Contributors: 
+    ldmotta(visie.com.br - Implementação do múdulo da visie),
 	DGMike (virgula.uol.com.br - Desenvolvedor do módulo pgs.),
-	ldmotta(visie.com.br - Implementação do múdulo da visie)
 	Flavio Sena (pagseguro.uol.com.br - Ajustes retorno automático, registro em db, cosméticos.)
 Donate link: http://motanet.com.br/
 Tags: pagseguro, opencart
-Module version: 1.0.3
+Module version: 1.0.4
 Tested up to: Opencart v1.4.9.3
 Requires at least: 1.0.2
 Stable tag: 1.0.2
@@ -36,6 +36,7 @@ Passos para instalação
 4. Defina a url de retorno no site do pagseguro (https://pagseguro.uol.com.br/preferences/automaticReturn.jhtml) como:
    "http://seu_dominio.com.br/retorno.php"
 5. Execute o arquivo ps_db_install.php para atualizar as tabelas de status no banco de dados
+6. Dê permissão de escrita ao arquivo ps.txt
 
 == Perguntas Frequentes ==
 
@@ -53,6 +54,10 @@ entre em contato com o desenvolvedor atravéz do endereço http://motanet.com.br
 == Screenshots ==
 
 == Changelog ==
+
+= 1.0.4 =
+* Corrigido o retorno automático e documentação de instalação, havia um erro na 
+query de seleção do pedido para atualização de status.
 
 = 1.0.3 =
 * Atualizando o status e histórico do pedido com base no retorno automático

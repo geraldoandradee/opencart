@@ -52,7 +52,7 @@ Acesse a página de *Retorno automático* através do menu *Meus dados* em *Conf
 
 Na opção de URL de retorno, ative a url de retorno e digite a seguinte url para retorno.
 
-<pre>http://[URL_DO_SEU_SITE]/obrigado.php</pre>
+<pre>http://[URL_DO_SEU_SITE]/retorno.php</pre>
 
 No segundo passo, ainda na tela de *Retorno automático*, peça para gerar uma chave de segurança,
 ou seja, um código *TOKEN* e copie-o para a tela de configurações.
