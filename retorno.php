@@ -90,6 +90,5 @@ function createLog($confirma) {
 	$log -> setLog($confirma ? 'ValidacaoPOST : VERIFICADO' . "\n" : 'ValidacaoPOST : FALSO' . "\n");
 	$log -> createlog();
 }
-//header('location: index.php?route=checkout/success');
 ?>
 
