@@ -6,9 +6,9 @@ Contributors:
 Donate link: http://motanet.com.br/
 Tags: pagseguro, opencart
 Module version: 1.0.4
-Tested up to: Opencart v1.4.9.4
+Tested up to: Opencart v 1.4.9.4 e 1.4.9.5
 Requires at least: 1.0.2
-Stable tag: 1.0.2
+Stable tag: 1.4.9.5
 
 Módulo de integração do Opencart com o Pagseguro
 
