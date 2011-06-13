@@ -120,8 +120,10 @@ class ControllerPaymentPagseguro extends Controller
             ($produtos[0]['quantidade'])
           );
 		 */
-		$produtos[0]['frete'] = str_replace('.','',sprintf("%01.2f", $this->session->data['shipping_method']['cost']));
-		 
+		if (count($this->session->data['shipping_method'])) {
+		    $produtos[0]['frete'] = str_replace('.','',sprintf("%01.2f", $this->session->data['shipping_method']['cost']));
+		}
+		
         $pgs->adicionar($produtos);
         $this->form=$pgs->mostra(array('print'=>false));
 
