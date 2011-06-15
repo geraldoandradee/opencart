@@ -17,9 +17,9 @@ class ControllerPaymentPagseguro extends Controller {
     function index() {
 
         $this->load->language('payment/pagseguro');
+		
+        $this->document->setTitle($this->language->get('heading_title'));
 
-        $this->document->title = $this->language->get('heading_title');
-        
         $this->load->model('setting/setting');
         
         $this->session->data['token'] = isset($this->session->data['token']) ? $this->session->data['token'] : '';
