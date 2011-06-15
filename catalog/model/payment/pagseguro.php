@@ -19,7 +19,7 @@ class ModelPaymentPagseguro extends Model
     {
 		$this->load->language('payment/pagseguro');
         $method_data = array( 
-                'id'         => 'pagseguro',
+                'code'       => 'pagseguro',
                 'title'      => $this->language->get('text_title'),
                 'sort_order' => $this->config->get('pagseguro_sort_order')
                 );
@@ -47,7 +47,7 @@ class ModelPaymentPagseguro extends Model
         		$option_data[] = array(
           			'name'   => $option['name'],
           			'value'  => $option['value'],
-                'prefix' => $option['prefix']
+					'prefix' => $option['prefix']
         		);
       		}
  
