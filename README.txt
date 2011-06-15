@@ -5,10 +5,10 @@ Contributors:
 	Flavio Sena (pagseguro.uol.com.br - Ajustes retorno automático, registro em db, cosméticos.)
 Donate link: http://motanet.com.br/
 Tags: pagseguro, opencart
-Module version: 1.0.4
-Tested up to: Opencart v 1.4.9.4 e 1.4.9.5
-Requires at least: 1.0.2
-Stable tag: 1.4.9.5
+Module version: 1.0.5
+Tested up to: Opencart v1.5.0.5
+Requires at least: 1.0.5
+Stable tag: 1.5.0.5
 
 Módulo de integração do Opencart com o Pagseguro
 
@@ -54,6 +54,11 @@ entre em contato com o desenvolvedor atravéz do endereço http://motanet.com.br
 == Screenshots ==
 
 == Changelog ==
+
+= 1.0.5 =
+* Corrigido a incompatibilidade com a versão 1.5.0.5 do OpenCart
+* O OpenCart utiliza agora o método title da classe document como private,
+sendo acessível apenas pelo getTitle() ou setTitle()
 
 = 1.0.4 =
 * Corrigido o retorno automático e documentação de instalação, havia um erro na 
