@@ -59,6 +59,7 @@ entre em contato com o desenvolvedor atravéz do endereço http://motanet.com.br
 * Corrigido a incompatibilidade com a versão 1.5.0.5 do OpenCart
 * O OpenCart utiliza agora o método title da classe document como private,
 sendo acessível apenas pelo getTitle() ou setTitle()
+* Funcionando com produtos que tenham atributos ou opções
 
 = 1.0.4 =
 * Corrigido o retorno automático e documentação de instalação, havia um erro na 
