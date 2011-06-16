@@ -26,6 +26,6 @@ $('#checkout form').submit(function() {
         success: function(t) {
             location = '<?php echo $continue; ?>'
         }
-});
+    });
 })
 //--></script>
