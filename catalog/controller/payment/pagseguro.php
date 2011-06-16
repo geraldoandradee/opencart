@@ -114,22 +114,13 @@ class ControllerPaymentPagseguro extends Controller
             'encoding'=>'utf-8',
         ));
         $pgs->cliente($cliente);
-		/*
-        $produtos[0]['frete']=intval(
-            ($this->session->data['shipping_method']['cost']*100) / 
-            ($produtos[0]['quantidade'])
-          );
-		 */
+
 		if (count($this->session->data['shipping_method'])) {
 		    $produtos[0]['frete'] = str_replace('.','',sprintf("%01.2f", $this->session->data['shipping_method']['cost']));
 		}
 		
         $pgs->adicionar($produtos);
-        $this->form=$pgs->mostra(array('print'=>false));
-
-        
-        //print '<pre class="debug" style="text-align:left;">'.print_r($pgs, true)."</pre>";
-        /* Biblioteca aplicada! */
+        $this->form = $pgs->mostra(array('print'=>false));
 
 		$this->id           = 'payment';
 		$this->template     = $this->config->get('config_template') . '/template/payment/pagseguro.tpl';
