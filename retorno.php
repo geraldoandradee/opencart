@@ -1,4 +1,5 @@
 <?php
+
 if(empty($_POST)){	
 	echo '<script type="text/javascript">window.close()</script>';
 	exit;
@@ -35,9 +36,12 @@ $db = new DB(DB_DRIVER, DB_HOSTNAME, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 
 // Settings
 $query = $db->query("SELECT value FROM " . DB_PREFIX . "setting s where s.key='pagseguro_token'");
+
 foreach ($query->rows as $setting) {
-	define('TOKEN',$setting['value']);
+	define('TOKEN', $setting['value']);
 }
+
+require_once(DIR_APPLICATION . 'controller/payment/pgs/tratadados.php');
 require_once(DIR_APPLICATION . 'controller/payment/pgs/retorno.php');
 
 function retorno_automatico(
@@ -49,13 +53,14 @@ function retorno_automatico(
 	global $db, $log;
 
     $order = $db->query('SELECT * FROM `' . DB_PREFIX . 'order` WHERE order_id = ' . $Referencia);
+    $StatusTransacao = normaliza($StatusTransacao);
 
 	switch($StatusTransacao){
 		case 'Aguardando Pagto' :
 			$order_status_id = 10200;
 			break;
 			
-		case 'Em Análise' :
+		case 'Em Analise' :
 			$order_status_id = 10201;
 			break;
 			
@@ -78,6 +83,7 @@ function retorno_automatico(
 		default:
 			$order_status_id = 10206;
 	}
+
 	$log -> setLog('order_status_id : ' . $order_status_id . "\n");
 	
 	$db->query('UPDATE `' . DB_PREFIX . 'order` SET `order_status_id` = ' . $order_status_id . ' WHERE `order_id` = ' . $Referencia);
