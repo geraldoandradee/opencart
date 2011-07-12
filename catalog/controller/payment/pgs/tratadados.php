@@ -103,4 +103,17 @@ function trataEndereco($end){
   return array(endtrim($endereco),endtrim($numero),endtrim($complemento));
 }
 
+function normaliza ($string='', $spaces=false, $tolower=false)
+{
+    $a = 'ŠŒŽšœžŸ¥µÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõöøùúûýýþÿŔŕ';
+    $b = 'SOZsozYYuAAAAAAACEEEEIIIIDNOOOOOOUUUUYbsaaaaaaaceeeeiiiidnoooooouuuyybyRr';
+    $string = utf8_decode($string);
+    $string = strtr($string, utf8_decode($a), $b);
+    if ($tolower) $string = strtolower($string);
+    $return = utf8_encode($string);
+    if ($spaces !== false) {
+        $return = str_replace (' ', $spaces===true?'':$spaces , $return);
+    }
+    return $return;
+}
 ?>

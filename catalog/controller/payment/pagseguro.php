@@ -49,6 +49,7 @@ class ControllerPaymentPagseguro extends Controller
                 'frete'      => 0,
             );
         }
+
         list($ddd, $telefone) = trataTelefone($order['telephone']);
         list($endereco, $numero, $complemento) = trataEndereco("{$order['payment_address_1']} {$order['payment_address_2']}");
         $cliente = array (
@@ -64,7 +65,7 @@ class ControllerPaymentPagseguro extends Controller
           'tel'    => $telefone,
           'email'  => $order['email'],
         );
-		
+
 		/*Pega cupom e calcula o desconto*/
 		if(isset($this->session->data['coupon']) && $this->session->data['coupon']){	
 			$coupon =  $this->model_checkout_coupon->getCoupon($this->session->data['coupon']);
@@ -112,21 +113,14 @@ class ControllerPaymentPagseguro extends Controller
             'encoding'=>'utf-8',
         ));
         $pgs->cliente($cliente);
-		/*
-        $produtos[0]['frete']=intval(
-            ($this->session->data['shipping_method']['cost']*100) / 
-            ($produtos[0]['quantidade'])
-          );
-		 */
-		$produtos[0]['frete'] = str_replace('.','',sprintf("%01.2f", $this->session->data['shipping_method']['cost']));
+		
+		if (count($this->session->data['shipping_method'])) {
+		    $produtos[0]['frete'] = str_replace('.','',sprintf("%01.2f", $this->session->data['shipping_method']['cost']));
+		}
 		 
         $pgs->adicionar($produtos);
-        $this->form=$pgs->mostra(array('print'=>false));
-
+        $this->form = $pgs->mostra(array('print'=>false));
         
-        //print '<pre class="debug" style="text-align:left;">'.print_r($pgs, true)."</pre>";
-        /* Biblioteca aplicada! */
-
 		$this->id           = 'payment';
 		$this->template     = $this->config->get('config_template') . '/template/payment/pagseguro.tpl';
 		$this->render(); 

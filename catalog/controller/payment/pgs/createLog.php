@@ -14,9 +14,9 @@ Class createLog{
 		$this -> log = $this -> log . $log;
 	}
 	public function createlog(){
-		$f = fopen ($this -> name, $this -> type);
-		fwrite($f, $this -> log . "\n\n");
-		fclose($f);		
+		$f = @fopen ($this -> name, $this -> type);
+		@fwrite($f, $this -> log . "\n\n");
+		@fclose($f);		
 	}
 }
 ?>
