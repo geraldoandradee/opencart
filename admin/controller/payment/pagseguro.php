@@ -52,24 +52,29 @@ class ControllerPaymentPagseguro extends Controller {
                         'separator' => ' :: '
                 )
         );
+        
         $langs = array(
                 'heading_title', 'text_payment', 'text_success',
                 'text_enabled', 'text_disabled', 'button_cancel',
                 'button_save', 'lb_mail', 'lb_token', 'lb_sort_order',
-                'lb_status', 'instructions_title', 'instructions_info'
+                'lb_status', 'instructions_title', 'instructions_info',
+                'entry_order_status'
         );
 
         foreach ($langs as $item) {
             $this->data[$item] = $this->language->get($item);
         }
 
-        foreach (array('mail', 'token', 'sort_order', 'status') as $item) {
+        foreach (array('mail', 'token', 'sort_order', 'status', 'order_status_id') as $item) {
             if (isset($this->request->post['pagseguro_'.$item])) {
                 $this->data["pagseguro_$item"] = $this->request->post["pagseguro_$item"];
             } else {
                 $this->data["pagseguro_$item"] = $this->config->get("pagseguro_$item");
             }
         }
+
+		$this->load->model('localisation/order_status');		
+		$this->data['order_statuses'] = $this->model_localisation_order_status->getOrderStatuses();
 
         $this->data['action'] = HTTPS_SERVER . 'index.php?route=payment/pagseguro&token=' . $this->session->data['token'];
 

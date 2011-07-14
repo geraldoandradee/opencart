@@ -115,7 +115,7 @@ class ControllerPaymentPagseguro extends Controller
         ));
         $pgs->cliente($cliente);
 
-		if (count($this->session->data['shipping_method'])) {
+		if (isset($this->session->data['shipping_method'])) {
 		    $produtos[0]['frete'] = str_replace('.','',sprintf("%01.2f", $this->session->data['shipping_method']['cost']));
 		}
 		
@@ -123,7 +123,12 @@ class ControllerPaymentPagseguro extends Controller
         $this->form = $pgs->mostra(array('print'=>false));
 
 		$this->id           = 'payment';
-		$this->template     = $this->config->get('config_template') . '/template/payment/pagseguro.tpl';
+		
+		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/pagseguro.tpl')) {
+			$this->template = $this->config->get('config_template') . '/template/payment/pagseguro.tpl';
+		} else {
+			$this->template = 'default/template/payment/pagseguro.tpl';
+		}		
 		$this->render(); 
 	}
 

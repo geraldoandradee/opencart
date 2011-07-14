@@ -221,7 +221,7 @@ class pgs {
 	function checkout() {
 		document.pagseguro.submit();
 		$.ajax({
-			type: \'GET\',   url: \'index.php?route=payment/cod/confirm\',
+			type: \'GET\',   url: \'index.php?route=payment/pagseguro/confirm\',
 			success: function() {
 				location = \'index.php?route=checkout/success\';
 			}

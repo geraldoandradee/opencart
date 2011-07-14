@@ -24,36 +24,16 @@ $_['error_permission']   = 'Você não ter permissões suficientes para editar e
 
 // Labels
 $_['lb_mail']            = 'Seu e-mail no PagSeguro';
-$_['lb_token']           = 'TOKEN (opcional)';
+$_['lb_token']           = 'TOKEN';
 $_['lb_sort_order']      = 'Ordem na lista';
 $_['lb_status']          = 'Status';
+
+// Entry
+$_['entry_order_status'] = 'Status de novos pedidos:';
 
 // Instructions
 $_['instructions_title'] = 'Instruções';
 $_['instructions_info']  = <<<EOF
-== Calculo de Frete ==
-
-Entre no site do [https://pagseguro.uol.com.br PagSeguro] e entre com seu usuário e senha.
-
-Entre no menu *Meus Dados* e acesse, em *Configuração de Checkout*, a opção *Preferências Web e frete*.
-
-Na *Definição de Cálculo do frete* deixe a opção *Fete fixo com desconto* marcada, e configure o 
-*Valor do frete para itens extra* definido como *0,00* conforme a figura.
-
-[img:pagseguro-frete.png]
-
-O cálculo do frete será gerado pelo OpenCart conforme definido no seu shipping method.
-
-== Retorno automático ==
-
-Entre no site do [https://pagseguro.uol.com.br PagSeguro] e entre com seu usuário e senha cadastrados.
-
-Acesse a página de *Retorno automático* através do menu *Meus dados* em *Configuração checkout*.
-
-Na opção de URL de retorno, ative a url de retorno e digite a seguinte url para retorno.
-
-<pre>http://[URL_DO_SEU_SITE]/retorno.php</pre>
-
-No segundo passo, ainda na tela de *Retorno automático*, peça para gerar uma chave de segurança,
-ou seja, um código *TOKEN* e copie-o para a tela de configurações.
+Acesse [https://pagseguro.uol.com.br PagSeguro] para instruções de uso e documentação.
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 EOF;

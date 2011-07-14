@@ -44,12 +44,26 @@
                 </tr>
                 <tr>
                     <td width="25%">
+                        <span class="required">*</span>
                         <?php echo $lb_token; ?>
                     </td>
                     <td>
                         <input type="text" name="pagseguro_token" value="<?php echo $pagseguro_token; ?>" />
                     </td>
                 </tr>
+                <tr>
+                    <td><?php echo $entry_order_status; ?></td>
+                    <td><select name="pagseguro_order_status_id">
+                        <?php foreach ($order_statuses as $order_status) { ?>
+                        <?php if ($order_status['order_status_id'] == $pagseguro_order_status_id) { ?>
+                        <option value="<?php echo $order_status['order_status_id']; ?>" selected="selected"><?php echo $order_status['name']; ?></option>
+                        <?php } else { ?>
+                        <option value="<?php echo $order_status['order_status_id']; ?>"><?php echo $order_status['name']; ?></option>
+                        <?php } ?>
+                        <?php } ?>
+                        </select>
+                    </td>
+                </tr>                
                 <tr>
                     <td width="25%">
                         <?php echo $lb_sort_order; ?>
