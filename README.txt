@@ -5,9 +5,9 @@ Contributors:
 	Flavio Sena (pagseguro.uol.com.br - Ajustes retorno automático, registro em db, cosméticos.)
 Donate link: http://motanet.com.br/
 Tags: pagseguro, opencart
-Module version: 1.0.5.1
+Module version: 1.0.5.2
 Tested up to: Opencart v1.5.0.5
-Requires at least: 1.0.5.1
+Requires at least: 1.0.5.2
 Stable tag: 1.5.0.5
 
 Módulo de integração do Opencart com o Pagseguro
@@ -54,6 +54,9 @@ entre em contato com o desenvolvedor atravéz do endereço http://motanet.com.br
 == Screenshots ==
 
 == Changelog ==
+= 1.0.5.2 =
+* Correção do erro de JSON no checkout
+* Implementando o admin para selecionar o status das novas transações
 
 = 1.0.5.1 =
 * Corrigido a model para funcionar com produtos que tenham atributos ou opções
